@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins
+  labels:
+    run: jenkins
+spec:
+  containers:
+  - name: jenkins
+    image: jenkins
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    run: jenkins
