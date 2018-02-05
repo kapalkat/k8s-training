@@ -1,0 +1,11 @@
+# https://raw.githubusercontent.com/kubernetes/website/master/docs/tasks/administer-cluster/quota-mem-cpu.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mem-cpu-demo
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
