@@ -1,2 +1,2 @@
 # k8s-training
-This is a repository with materials grabbed durin my preparation to CKA exam
+This repostiroy contains templates grabbed from OFFICIAL Kubernetes.io site. The templates are segregated according to the role.
