@@ -7,3 +7,4 @@ aggregationRule:
   - matchLabels:
       rbac.example.com/aggregate-to-monitoring: "true"
 rules: [] # Rules are automatically filled in by the controller manager.
+# test git
