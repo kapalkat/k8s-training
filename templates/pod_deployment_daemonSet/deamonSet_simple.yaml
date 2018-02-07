@@ -15,9 +15,10 @@ spec:
       labels:
         name: fluentd-elasticsearch
     spec:
-      tolerations:
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
+      # This toleration makes sure that the deamonset is scheduled on master nodes
+      # tolerations:
+      # - key: node-role.kubernetes.io/master
+      #   effect: NoSchedule
       containers:
       - name: fluentd-elasticsearch
         image: gcr.io/google-containers/fluentd-elasticsearch:1.20
