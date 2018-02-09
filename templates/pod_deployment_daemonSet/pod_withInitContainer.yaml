@@ -22,7 +22,7 @@ spec:
     - http://kubernetes.io
     volumeMounts:
     - name: workdir
-      mountPath: "/work-dir"
+      mountPath: /work-dir
   dnsPolicy: Default
   volumes:
   - name: workdir
