@@ -1,0 +1,34 @@
+1. Basic log viewing
+$ journalctl
+
+2. Displaying Logs from the Current Boot
+$ journalctl -b
+
+3. Time Windows. Filter the logs with --since and --until.
+The time values can come in a variety of formats. For absolute time values, you should use the following format:
+YYYY-MM-DD HH:MM:SS
+$ journalctl --since "2015-01-10 17:15:00"
+$ journalctl --since 09:00 --until "1 hour ago"
+
+4. Filtering
+* By unit 
+$ journalctl -u nginx.service
+$ journalctl -u nginx.service --since today
+
+* By Process, User, or Group ID
+$ journalctl _PID=8088
+
+_UID, _GID 
+getting the id: id -u www-data
+$ journalctl _UID=33 --since today
+
+* By Component Path
+$ journalctl /usr/bin/bash
+
+5. Displaying Recent Logs
+$ journalctl -n
+You can specify the number of entries you'd like to see with a number after the -n
+$ journalctl -n 20
+
+6. Following Logs
+$ journalctl -f

@@ -1,0 +1,42 @@
+1. How to start the service
+$ sudo systemctl start application.service
+or
+$ sudo systemctl start application
+
+2. How to stop the service
+$ sudo systemctl stop application.service
+
+3. Restart and Reload
+$ sudo systemctl restart application.service
+$ sudo systemctl reload application.service
+
+4. Enabling and Disabling the service.
+$ sudo systemctl enable application.service
+$ sudo systemctl disable application.service
+
+5. Checking the status of Services
+$ sudo systemctl status application.service
+$ sudo systemctl is-active application.service
+$ sudo systemctl is-enabled application.service
+
+6. SYstem state overview
+$ sudo systemctl list-units
+
+List all active together with non active
+$ sudo systemctl list-units --all
+
+7. Listing all unit files
+$ sudo systemctl list-unit-files
+
+8. Unit management
+Dispaly a unit files
+$ sudo systemctl cat application.service
+
+9. Editing Unit files
+$ sudo systemctl edit nginx.service
+
+Editing full unit file instead of creating a snippet:
+sudo systemctl edit --full nginx.service
+
+10. After modification we should do systemd deamon reload
+sudo systemctl daemon-reload
