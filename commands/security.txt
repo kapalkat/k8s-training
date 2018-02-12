@@ -1,0 +1,5 @@
+Checking API Access:
+$ kubectl auth can-i create deployments --namespace dev
+
+we can check if other users have access to specific api:
+$ kubectl auth can-i list secrets --namespace dev --as dave

@@ -1,0 +1,11 @@
+Query pod by label
+$ kubectl get pods -l label_name=label+value
+
+Show specific pod label in new column:
+$ kubectl get pods -Lrun
+
+Assign label to running pods
+$ kubectl label pods ghost foo=bar
+
+Show all the labels of the pod
+$ kubectl get pods --show-labels

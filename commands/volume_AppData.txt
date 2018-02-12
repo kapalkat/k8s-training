@@ -1,0 +1,17 @@
+Secrets:
+Get secrets:
+$ kubectl get secrets
+
+Creating a secret:
+$ kubectl create secret generic mysql --from-literal=password=root
+
+Show details of the secrets via kubectl
+$ kubectl get secrets mysql -o yaml
+
+
+ConfigMaps:
+To create a ConfigMap:
+$ kubectl create configmaps foobar --from-file=config.js
+
+Check the Config Map:
+$ kubectl describe configmaps foobar

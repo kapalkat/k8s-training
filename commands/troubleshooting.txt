@@ -1,0 +1,50 @@
+To get rid of all pods from a node:
+  $ kubectl drain node_name
+  
+  To prepare a node for maintenance, you might want to stop scheduling pods to it:
+  $ kubectl cordon node_name
+  
+  Check the health of all components on the node:
+  $ kubectl get componentstatuses
+  
+  Start a bash session in the Pod's container
+  kubectl exec -ti $POD_NAME bash
+  
+  Run busy box to check if other POD is running:
+  $ kubectl run busybox --image=busybox --restart=Never --tty -i --generator=run-pod/v1 --env "POD_IP=$(kubectl get pod nginx -o go-template='{{.status.podIP}}')"
+  u@busybox$ wget -qO- http://$POD_IP # Run in the busybox container
+  u@busybox$ exit # Exit the busybox container
+  $ kubectl delete pod busybox # Clean up the pod we created with "kubectl run"
+  
+  Run MySQL client to connect to the SQL server:
+  $ kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
+  
+  
+  Debug Pods and Replication Controllers
+  Insufficient resources
+  $ kubectl get nodes -o yaml | grep '\sname\|cpu\|memory'
+  
+  If your container has previously crashed, you can access the previous container’s crash log with:
+  $ kubectl logs --previous ${POD_NAME} ${CONTAINER_NAME}
+  
+  Interactive busybox Pod
+  $ kubectl run -it --rm --restart=Never busybox --image=busybox sh
+  
+  Does the Service work by IP?
+  Assuming we can confirm that DNS works, the next thing to test is whether your Service works at all. From a node in your cluster, access the Service’s IP (from kubectl get above).
+  u@node$ curl 10.0.1.175:80
+  hostnames-0uton
+  
+  Does the Service have any Endpoints?
+  $ kubectl get endpoints hostnames
+  
+  Are the Pods working?
+  u@pod$ wget -qO- 10.244.0.5:9376
+  hostnames-0uton
+  
+  Is the kube-proxy working?
+  u@node$ ps auxw | grep kube-proxy
+  
+  Is kube-proxy writing iptables rules?
+  u@node$ iptables-save | grep hostnames
+  

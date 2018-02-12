@@ -1,0 +1,5 @@
+1. Service DNS
+my-svc.my-namespace.svc.cluster.local
+
+2. Pod DNS
+pod-ip-address.my-namespace.pod.cluster.local

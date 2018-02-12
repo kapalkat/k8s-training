@@ -1,0 +1,5 @@
+Check the status of all kubernetes components
+$ kubectl get componentstatuses
+
+To check basic information about the cluster run:
+$ kubectl cluster-info

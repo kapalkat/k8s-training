@@ -1,0 +1,55 @@
+Create a deployment
+$ kubectl run ghost --image=ghost
+This has created a deployment and then replica set which has created a pod
+
+Create a deployment running on specific port
+$ kubectl run ghost --image=ghost --port=8080
+This has created a deployment and then replica set which has created a pod which runs on port 8080
+
+Create a deployment in specific namespace:
+$ kubectl run --namespace=ns_name deployment_name --image=nginx
+
+Expose the deployment as service:
+$ kubectl expose deployment/dep_name --port=port --type=NodePort
+
+Scaling the deployment
+$ kubectl scale deployment/deployment_name --replicas=10
+
+Output the manifest of the deployment
+$ kubectl get deployments ghost -o json
+
+Check the labels of pods
+$ kubectl get pods -Lrun
+
+Remove a label from pod (run label will be removed)
+$ kubectl label pods pod_name run-
+
+Change the image of the deployment
+$ kubectl set image deployment/ghost ghost=ghost:0.9
+This is creating new pods with new image, old are being terminated. 
+New replicaset is created which creates new pods.
+Olds replica set is removing old pods.
+
+The update can be confirmed by running a rollout status command:
+$ kubectl rollout status deployment/deployment_name
+
+Check the history of rollouts:
+$ kubectl rollout history deployment/ghost
+
+Record the deployment when rolling update:
+$ kubectl run redis --image=redis --record
+Next lets set new image for the deployment:
+$ kubectl set image deployment redis redis=redis:2.3
+Check the hisotry of rolllouts:
+$ kubectl rollout history deployment/redis
+
+Rollback the deployment:
+$ kubectl rollout undo deployment/redis
+
+Rollback to specific revision:$ kubectl rollout undo deployment/redis --to-revision=2
+
+Parsing the deployment manifest with jq to list the pod selection via labels:
+$ kubectl get deployment ghost -o json | jq -r .spec.selector
+
+
+
