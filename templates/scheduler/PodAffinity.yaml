@@ -1,3 +1,4 @@
+# source: http://blog.kubernetes.io/2017/03/advanced-scheduling-in-kubernetes.html
 apiVersion: v1
 kind: Pod
 metadata:
@@ -13,7 +14,7 @@ spec:
             operator: In
             values:
             - frontend
-        topologyKey: failure-domain.beta.kubernetes.io/zone
+        topologyKey: kubernetes.io/hostname
   containers:
   - name: name
     image: nginx
