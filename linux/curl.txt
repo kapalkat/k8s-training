@@ -1,0 +1,4 @@
+1. Download using link placed in a file:
+$ curl $(<link.txt)
+
+2. 
