@@ -1,0 +1,7 @@
+1. Get all persistant volumes and sort by cpacity
+kubectl get pv --sort-by=.spec.capacity.storage
+
+2. Get all persistant volumes and sort by name
+kubectl get pv --sort-by=.metadata.name
+
+

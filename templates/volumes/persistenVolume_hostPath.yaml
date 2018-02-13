@@ -6,7 +6,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 2Gi
+    storage: 200M
   accessModes:
     - ReadWriteOnce
 #  persistentVolumeReclaimPolicy: Recycle
