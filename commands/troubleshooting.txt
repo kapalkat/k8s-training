@@ -48,3 +48,6 @@ To get rid of all pods from a node:
   Is kube-proxy writing iptables rules?
   u@node$ iptables-save | grep hostnames
   
+
+  Port-Forward from pod
+  kubectl port-forward my-pod 5000:6000
