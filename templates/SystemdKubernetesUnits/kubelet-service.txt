@@ -1,0 +1,31 @@
+# Official documentation from : https://github.com/kelseyhightower/kubernetes-the-hard-way/
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \
+  --allow-privileged=true \
+  --anonymous-auth=false \
+  --authorization-mode=Webhook \
+  --client-ca-file=/var/lib/kubernetes/ca.pem \
+  --cloud-provider= \
+  --cluster-dns=10.32.0.10 \
+  --cluster-domain=cluster.local \
+  --container-runtime=docker \
+  --image-pull-progress-deadline=2m \
+  --kubeconfig=/var/lib/kubelet/kubeconfig \
+  --network-plugin=cni \
+  --pod-cidr=10.200.21.0 \
+  --register-node=true \
+  --runtime-request-timeout=15m \
+  --tls-cert-file=/var/lib/kubelet/worker1.pem \
+  --tls-private-key-file=/var/lib/kubelet/worker1-key.pem \
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
